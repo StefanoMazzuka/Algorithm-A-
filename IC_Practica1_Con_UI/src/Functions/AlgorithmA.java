@@ -49,8 +49,8 @@ public class AlgorithmA {
 
 		/*Box de arriba*/
 		if (!outOfRange(row - 1, column) && 
-				!this.close.contains(this.map[row - 1][column]) && 
-				this.map[row - 1][column].getType() != 2) {
+				!this.close.contains(this.map[row - 1][column]) &&
+				!this.open.contains(this.map[row - 1][column])) {
 
 			this.map[row - 1][column].setFatherRow(row);
 			this.map[row - 1][column].setFatherColumn(column);
@@ -60,8 +60,8 @@ public class AlgorithmA {
 
 		/*Box de derecha/arriba*/
 		if (!outOfRange(row - 1, column + 1) && 
-				!this.close.contains(this.map[row - 1][column + 1]) && 
-				this.map[row - 1][column + 1].getType() != 2) {
+				!this.close.contains(this.map[row - 1][column + 1]) &&
+				!this.open.contains(this.map[row - 1][column + 1])) {
 
 			this.map[row - 1][column + 1].setFatherRow(row);
 			this.map[row - 1][column + 1].setFatherColumn(column);
@@ -71,8 +71,8 @@ public class AlgorithmA {
 
 		/*Box de derecha*/
 		if (!outOfRange(row, column + 1) && 
-				!this.close.contains(this.map[row][column + 1]) && 
-				this.map[row][column + 1].getType() != 2) {
+				!this.close.contains(this.map[row][column + 1]) &&
+				!this.open.contains(this.map[row][column + 1])) {
 
 			this.map[row][column + 1].setFatherRow(row);
 			this.map[row][column + 1].setFatherColumn(column);
@@ -82,8 +82,8 @@ public class AlgorithmA {
 
 		/*Box de derecha/abajo*/
 		if (!outOfRange(row + 1, column + 1) && 
-				!this.close.contains(this.map[row + 1][column + 1]) && 
-				this.map[row + 1][column + 1].getType() != 2) {
+				!this.close.contains(this.map[row + 1][column + 1]) &&
+				!this.open.contains(this.map[row + 1][column + 1])) {
 
 			this.map[row + 1][column + 1].setFatherRow(row);
 			this.map[row + 1][column + 1].setFatherColumn(column);
@@ -93,8 +93,8 @@ public class AlgorithmA {
 
 		/*Box de abajo*/
 		if (!outOfRange(row + 1, column) && 
-				!this.close.contains(this.map[row + 1][column]) && 
-				this.map[row + 1][column].getType() != 2) {
+				!this.close.contains(this.map[row + 1][column]) &&
+				!this.open.contains(this.map[row + 1][column])) {
 
 			this.map[row + 1][column].setFatherRow(row);
 			this.map[row + 1][column].setFatherColumn(column);
@@ -104,8 +104,8 @@ public class AlgorithmA {
 
 		/*Box de izquierda/abajo*/
 		if (!outOfRange(row + 1, column - 1) && 
-				!this.close.contains(this.map[row + 1][column - 1]) && 
-				this.map[row + 1][column - 1].getType() != 2) {
+				!this.close.contains(this.map[row + 1][column - 1]) &&
+				!this.open.contains(this.map[row + 1][column - 1])) {
 
 			this.map[row + 1][column - 1].setFatherRow(row);
 			this.map[row + 1][column - 1].setFatherColumn(column);
@@ -115,8 +115,8 @@ public class AlgorithmA {
 
 		/*Box de izquerda*/
 		if (!outOfRange(row, column - 1) && 
-				!this.close.contains(this.map[row][column - 1]) && 
-				this.map[row ][column - 1].getType() != 2) {
+				!this.close.contains(this.map[row][column - 1]) &&
+				!this.open.contains(this.map[row][column - 1])) {
 
 			this.map[row][column - 1].setFatherRow(row);
 			this.map[row][column - 1].setFatherColumn(column);
@@ -126,8 +126,8 @@ public class AlgorithmA {
 
 		/*Box de izquerda/arriba*/
 		if (!outOfRange(row - 1, column - 1) && 
-				!this.close.contains(this.map[row - 1][column - 1]) && 
-				this.map[row - 1][column - 1].getType() != 2) {
+				!this.close.contains(this.map[row - 1][column - 1]) &&
+				!this.open.contains(this.map[row - 1][column - 1])) {
 
 			this.map[row - 1][column - 1].setFatherRow(row);
 			this.map[row - 1][column - 1].setFatherColumn(column);
@@ -218,6 +218,7 @@ public class AlgorithmA {
 	}
 	public void setWall(int row, int column) {
 		map[row][column].setType(2);
+		this.close.add(map[row][column]);
 	}
 	public Box[][] getMap() {
 		return this.map;

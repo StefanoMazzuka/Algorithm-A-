@@ -123,7 +123,8 @@ public class Map extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				if (!startExists() || !endExists()) 
-					JOptionPane.showMessageDialog(null, "ERROR: Please insert the start point" + "\nand the end point.");
+					JOptionPane.showMessageDialog(null, "ERROR: Please enter the start point "
+							+ "and the end point.");
 				else {
 					runAlgorithmA();
 					updateMap();
